@@ -1,0 +1,74 @@
+export interface GeoLocationType {
+    name: string
+    local_names?: LocalNames
+    lat: number
+    lon: number
+    country: string
+    state: string
+  }
+  
+  export interface LocalNames {
+    feature_name: string
+    hi: string
+    bg: string
+    ht: string
+    th: string
+    gu: string
+    fr: string
+    ko: string
+    mn: string
+    bn: string
+    ja: string
+    mr: string
+    cs: string
+    eo: string
+    ml: string
+    es: string
+    so: string
+    az: string
+    et: string
+    vi: string
+    nl: string
+    ug: string
+    ar: string
+    hu: string
+    uk: string
+    pl: string
+    ur: string
+    fy: string
+    zh: string
+    de: string
+    tg: string
+    dv: string
+    pa: string
+    sv: string
+    sr: string
+    am: string
+    hr: string
+    id: string
+    lt: string
+    sk: string
+    bo: string
+    af: string
+    te: string
+    ka: string
+    ascii: string
+    os: string
+    it: string
+    ta: string
+    si: string
+    en: string
+    oc: string
+    he: string
+    tr: string
+    fi: string
+    da: string
+    el: string
+    be: string
+    ru: string
+    eu: string
+    lv: string
+    kn: string
+    fa: string
+  }
+  

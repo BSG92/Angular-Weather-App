@@ -1,0 +1,86 @@
+<div class="container-center">
+  <div class="mt-5 mx-10 w-full md:mt-10 md:mx-20 lg:mx-auto lg:max-w-[30vw]">
+    <div
+      class="flex w-full items-center shadow-even shadow-black/20 rounded-xl bg-[var(--background)] focus-within:shadow-[#fd2464]/20"
+    >
+      <span class="ml-3 w-fit text-neutral-500">
+        <fa-icon [icon]="faSearch"></fa-icon>
+      </span>
+      <input
+        #search
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="filterData()"
+        (focus)="onSearchFocus($event)"
+        (keyup.enter)="onCitySelected({city: search.value, country: ''})"
+        placeholder="Search city"
+        class="relative w-full py-2 px-3 bg-inherit caret-[#fd2464] text-neutral-200 placeholder:text-neutral-400 outline-none rounded-xl"
+      />
+      <ul
+        *ngIf="filteredCities.length > 0"
+        class="absolute top-20 left-[50%] -translate-x-[50%] z-30 w-[80vw] lg:w-[30vw] bg-[var(--background)] rounded-xl overflow-clip shadow-even shadow-black/20 text-neutral-200"
+      >
+        <li
+          *ngFor="let result of filteredCities"
+          class="p-2 hover:bg-[#fd2464]/20 cursor-pointer"
+          (click)="
+            onCitySelected({ city: result.city, country: result.country })
+          "
+        >
+          {{ result.city }}, {{ result.country }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<section class="container-center">
+  <div class="mt-7 mx-10 w-full md:mt-10 md:mx-20 lg:mx-auto lg:max-w-[30vw]">
+    <div
+      *ngIf="timezoneData.length > 0"
+      class="relative flex flex-col gap-0 w-full text-white before:absolute before:top-0 before:-left-4 before:w-2 before:h-full before:bg-rose-500"
+    >
+      <div class="space-x-3 text-sm text-rose-500 font-semibold">
+        <span class="space-x-1">
+          <span>Lat:</span>
+          <span class="text-neutral-400">{{timezoneData[0].lat}}</span>
+        </span>
+        <span class="space-x-1">
+          <span>Lon:</span>
+          <span *ngIf="isTypeCityData(timezoneData[0])" class="text-neutral-400">{{timezoneData[0].lng}}</span>
+          <span *ngIf="!isTypeCityData(timezoneData[0])" class="text-neutral-400">{{timezoneData[0].lon}}</span>
+        </span>
+      </div>
+      <h2 *ngIf="isTypeCityData(timezoneData[0])" class="text-3xl md:text-4xl font-bold">
+        {{ timezoneData[0].city + ", " + timezoneData[0].iso2 }}
+      </h2>
+      <h2 *ngIf="!isTypeCityData(timezoneData[0])" class="text-3xl md:text-4xl font-bold">
+        {{ timezoneData[0].name + ", " + timezoneData[0].country }}
+      </h2>
+      <span *ngIf="currentTimeOfCity" class="text-neutral-400">{{
+        currentTimeOfCity
+      }}</span>
+    </div>
+
+    <button
+      type="button"
+      *ngIf="!isFetching && (isCitySelected && timezoneData.length < 1)"
+      (click)="callGeolocationApi()"
+      class="relative py-2 px-3 w-full flex flex-row items-center text-white
+        border-t border-b border-l border-rose-500/20 bg-rose-900/5
+        after:absolute after:top-0 after:-right-0 after:w-3 after:h-full after:bg-rose-500 after:border-none"
+    >
+      <h1 class="font-bold text-5xl text-rose-500">!</h1>
+      <div class="px-3 mx-auto flex flex-col">
+        <div class="font-semibold uppercase text-rose-500">Geo location data not available</div>
+        <div class="text-sm text-neutral-400">Click to search with geolocation API</div>
+      </div>
+    </button>
+  </div>
+</section>
+
+<section class="mt-7 mx-5 md:mx-20 lg:mx-auto lg:max-w-[30vw] md:mt-7 lg:mt-9">
+  <app-weather [city_data]="timezoneData" [has_geolocation_data]="hasGeoLocationData"></app-weather>
+</section>
+
+<router-outlet></router-outlet>
