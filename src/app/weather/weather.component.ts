@@ -51,7 +51,7 @@ export class WeatherComponent implements OnChanges {
   icons = {
     iconUrl: '../../assets/weather-icons/',
     iconMap: {
-      "01d" : 'sun.png',
+      "01d" : 'day-clear.png',
       "02d" : 'cloudy.png',
       "03d" : 'clouds.png',
       "04d" : 'heavy-clouds.png',
@@ -60,7 +60,7 @@ export class WeatherComponent implements OnChanges {
       "11d" : 'heavy-storm.png',
       "13d" : 'snow.png',
       "50d" : 'mist.png',
-      "01n" : 'sun.png',
+      "01n" : 'night-clear.png',
       "02n" : 'night-clouds.png',
       "03n" : 'night-clouds.png',
       "04n" : 'night-heavy-clouds.png',

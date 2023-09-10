@@ -40,7 +40,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 <br/>
 - Cloudy icon: <a href="https://www.flaticon.com/free-icons/weather" title="weather icons">Weather icons created by iconixar - Flaticon</a>
 - Cloudy rain: <a href="https://www.flaticon.com/free-icons/rain" title="rain icons">Rain icons created by iconixar - Flaticon</a>
-- Sun: <a href="https://www.flaticon.com/free-icons/weather" title="weather icons">Weather icons created by Freepik - Flaticon</a>
+- Clear day: <a href="https://www.flaticon.com/free-icons/clear-sky" title="clear sky icons">Clear sky icons created by Freepik - Flaticon</a>
 - Wind: <a href="https://www.flaticon.com/free-icons/air" title="air icons">Air icons created by Phoenix Group - Flaticon</a>
 - Storm: <a href="https://www.flaticon.com/free-icons/rain" title="rain icons">Rain icons created by Freepik - Flaticon</a>
 - Rain: <a href="https://www.flaticon.com/free-icons/precipitation" title="precipitation icons">Precipitation icons created by Eucalyp - Flaticon</a>
@@ -55,6 +55,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - Night Heavy Rain: <a href="https://www.flaticon.com/free-icons/rain" title="rain icons">Rain icons created by Freepik - Flaticon</a>
 - Heavy Night Clouds: <a href="https://www.flaticon.com/free-icons/night" title="night icons">Night icons created by Freepik - Flaticon</a>
 - Night Snow: <a href="https://www.flaticon.com/free-icons/snow" title="snow icons">Snow icons created by Freepik - Flaticon</a>
+- Night Clear Sky: <a href="https://www.flaticon.com/free-icons/night" title="night icons">Night icons created by Freepik - Flaticon</a>
 - Cloud Error: <a href="https://www.flaticon.com/free-icons/cloud-slash" title="cloud slash icons">Cloud slash icons created by Cap Cool - Flaticon</a>
 - Magnifier (Search): <a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Freepik - Flaticon</a>
 - Blood Pressure icon: <a href="https://www.flaticon.com/free-icons/pressure" title="pressure icons">Pressure icons created by Smashicons - Flaticon</a>
