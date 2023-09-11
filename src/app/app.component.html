@@ -34,8 +34,8 @@
   </div>
 </div>
 
-<section class="container-center">
-  <div class="mt-7 mx-10 w-full md:mt-10 md:mx-20 lg:mx-auto lg:max-w-[30vw]">
+<section class="mx-10 md:mx-20 container-center">
+  <div class="mt-7 w-full md:mt-10 md:mx-20 lg:mx-auto md:max-w-[30vw]">
     <div
       *ngIf="timezoneData.length > 0"
       class="relative flex flex-col gap-0 w-full text-white before:absolute before:top-0 before:-left-4 before:w-2 before:h-full before:bg-rose-500"
@@ -63,23 +63,24 @@
     </div>
 
     <button
-      type="button"
+    type="button"
       *ngIf="!isFetching && (isCitySelected && timezoneData.length < 1)"
       (click)="callGeolocationApi()"
-      class="relative py-2 px-3 w-full flex flex-row items-center text-white
-        border-t border-b border-l border-rose-500/20 bg-rose-900/5
-        after:absolute after:top-0 after:-right-0 after:w-3 after:h-full after:bg-rose-500 after:border-none"
+      class="relative mx-auto py-2 px-3 flex flex-row items-center text-white w-full md:w-fit lg:max-w-[30vw]
+        border-t border-b border-r border-rose-500/20 bg-rose-900/5
+        before:absolute before:top-0 before:left-0 before:w-3 before:h-full before:bg-rose-500 before:ring-1 before:ring-rose-500"
     >
-      <h1 class="font-bold text-5xl text-rose-500">!</h1>
-      <div class="px-3 mx-auto flex flex-col">
-        <div class="font-semibold uppercase text-rose-500">Geo location data not available</div>
-        <div class="text-sm text-neutral-400">Click to search with geolocation API</div>
-      </div>
+    <div class="pl-4 flex flex-col text-start">
+      <div class="font-semibold uppercase text-rose-500">Geo location data not available</div>
+      <div class="text-sm text-neutral-400">Click to search with geolocation API</div>
+    </div>
+    <h1 class="ml-auto font-bold text-5xl text-rose-500">!</h1>
     </button>
   </div>
 </section>
 
-<section class="mt-7 mx-5 md:mx-20 lg:mx-auto lg:max-w-[30vw] md:mt-7 lg:mt-9">
+<!-- <section *ngIf="hasGeoLocationData && !isFetching" class="mt-7 mx-5 md:mx-20 lg:mx-auto lg:max-w-[30vw] md:mt-7 lg:mt-9"> -->
+<section class="mt-7 mx-auto md:mx-20 lg:mx-0 md:mt-7 lg:mt-9 flex w-full justify-center">
   <app-weather [city_data]="timezoneData" [has_geolocation_data]="hasGeoLocationData"></app-weather>
 </section>
 

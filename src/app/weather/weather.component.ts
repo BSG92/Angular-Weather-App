@@ -6,7 +6,7 @@ import is_typeCityData from '../utils/isTypeCityData';
 import { CurrentWeatherType } from '../models/currentWeather.model';
 
 interface IconMapType {
-  [key: string ]: string;
+  [key: string]: string;
 }
 
 @Component({
@@ -14,7 +14,6 @@ interface IconMapType {
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.css'],
 })
-
 export class WeatherComponent implements OnChanges {
   constructor(private currentWeatherService: WeatherNowService) {}
 
@@ -41,7 +40,7 @@ export class WeatherComponent implements OnChanges {
           this.callWeatherNowApi();
         }
       }
-      if(propName === 'has_geolocation_data'){
+      if (propName === 'has_geolocation_data') {
         this.hasGeoLocationData = changes[propName].currentValue;
         // console.log('has geoData', changes[propName].currentValue)
       }
@@ -51,25 +50,25 @@ export class WeatherComponent implements OnChanges {
   icons = {
     iconUrl: '../../assets/weather-icons/',
     iconMap: {
-      "01d" : 'day-clear.png',
-      "02d" : 'cloudy.png',
-      "03d" : 'clouds.png',
-      "04d" : 'heavy-clouds.png',
-      "09d" : 'heavy-rain.png',
-      "10d" : 'cloudy-rain.png',
-      "11d" : 'heavy-storm.png',
-      "13d" : 'snow.png',
-      "50d" : 'mist.png',
-      "01n" : 'night-clear.png',
-      "02n" : 'night-clouds.png',
-      "03n" : 'night-clouds.png',
-      "04n" : 'night-heavy-clouds.png',
-      "09n" : 'night-heavy-rain.png',
-      "10n" : 'heavy-rain.png',
-      "11n" : 'storm.png',
-      "13n" : 'night-snow.png',
-      "50n" : 'night-mist.png',
-      "undefined": 'cloud-error.png'
+      '01d': 'day-clear.png',
+      '02d': 'cloudy.png',
+      '03d': 'clouds.png',
+      '04d': 'heavy-clouds.png',
+      '09d': 'heavy-rain.png',
+      '10d': 'cloudy-rain.png',
+      '11d': 'heavy-storm.png',
+      '13d': 'snow.png',
+      '50d': 'mist.png',
+      '01n': 'night-clear.png',
+      '02n': 'night-clouds.png',
+      '03n': 'night-clouds.png',
+      '04n': 'night-heavy-clouds.png',
+      '09n': 'night-heavy-rain.png',
+      '10n': 'heavy-rain.png',
+      '11n': 'storm.png',
+      '13n': 'night-snow.png',
+      '50n': 'night-mist.png',
+      undefined: 'cloud-error.png',
       // "01d" : '01d.png',
       // "02d" : '02d.png',
       // "03d" : '03d.png',
@@ -89,40 +88,39 @@ export class WeatherComponent implements OnChanges {
     return is_typeCityData(obj);
   }
 
-  getIconUrl(iconCode: string| undefined): string {
+  getIconUrl(iconCode: string | undefined): string {
     if (iconCode !== undefined)
       return this.icons.iconUrl + this.icons.iconMap[iconCode];
-    return this.icons.iconUrl + this.icons.iconMap['undefined'];;
+    return this.icons.iconUrl + this.icons.iconMap['undefined'];
   }
 
-  kelvin2Celcius(kelvin: number): {celcius: string, color: string}{
+  kelvin2Celcius(kelvin: number): { celcius: string; color: string } {
     // if(kelvin !== undefined) return (kelvin - 273.15).toFixed(1);
-    if(kelvin !== undefined) {
-      const celcius = (kelvin - 273.15);
-      let color:string = '';
+    if (kelvin !== undefined) {
+      const celcius = kelvin - 273.15;
+      let color: string = '';
       if (celcius < -17) {
         color = 'ice-cold';
-      }else if(celcius < 6) {
+      } else if (celcius < 6) {
         color = 'cold';
-      }else if(celcius <= 21) {
+      } else if (celcius <= 21) {
         color = 'warm';
-      }else if(celcius <= 26){
+      } else if (celcius <= 26) {
         color = 'hot';
-      }else {
+      } else {
         color = 'damn-hot';
       }
-      return {celcius: celcius.toFixed(1), color: color}
-
+      return { celcius: celcius.toFixed(1), color: color };
     }
-    return {celcius: "-0", color: ''};
+    return { celcius: '-0', color: '' };
   }
 
-  getTimeZoneOffsetHours_Minutes(offsetInSeconds: number): string{
+  getTimeZoneOffsetHours_Minutes(offsetInSeconds: number): string {
     const sign = offsetInSeconds >= 0 ? '+' : '-';
     const hours = Math.floor(Math.abs(offsetInSeconds) / 3600);
     const minutes = Math.floor((Math.abs(offsetInSeconds) % 3600) / 60);
 
-    return `${sign}${hours.toString()}:${minutes.toString()}`
+    return `${sign}${hours.toString()}:${minutes.toString()}`;
   }
   /* END: helper functions */
 
@@ -135,8 +133,8 @@ export class WeatherComponent implements OnChanges {
     if (epoch !== undefined) {
       const timezoneOffsetInSeconds = this.weatherData?.timezone;
       let date;
-      if(timezoneOffsetInSeconds !== undefined){
-      date = new Date((epoch + timezoneOffsetInSeconds) * 1000);
+      if (timezoneOffsetInSeconds !== undefined) {
+        date = new Date((epoch + timezoneOffsetInSeconds) * 1000);
         return date.getUTCHours() + ' : ' + date.getUTCMinutes();
       }
       // return localeDate.getHours().toString() + ":" + localeDate.getMinutes().toString();
